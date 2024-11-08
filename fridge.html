@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Refrigerator Display</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="fridge">
+        <!-- Smart display -->
+        <div id="display" class="display">
+            <div class="top-bar">
+                <button id="onOffBtn" class="btn power-off">Power</button>
+                <div id="clock" class="clock" onclick="toggleTimeFormat()">12:00 PM</div>
+            </div>
+
+            <!-- Home Screen content (hidden initially) -->
+            <div id="homeScreen" class="content hidden">
+                <div id="tempDisplay" class="temp" onclick="toggleTemperature()">Fridge: 35°F<br>Freezer: 0°F</div>
+                <button id="viewInsideBtn" class="btn">Peek Inside &#128064;</button>
+                <button id="launchBrowserBtn" class="btn">Web Browser &#127760;</button>
+                <button id="launchMediaBtn" class="btn">Streaming &#128250;</button>
+                <button id="settingsBtn" class="btn">Settings and Temp &#9881;&#65039;</button>
+                <button id="timerBtn" class="btn">Timer</button> <!-- New Timer button -->
+                <button id="shoppingListBtn" class="btn">Shopping List</button> <!-- New Shopping List button -->
+            </div>
+
+            <!-- Dynamic Screen Content -->
+            <div id="screenContent" class="screen-content"></div>
+            
+            <!-- Home Screen button (only visible when power is on) -->
+            <button id="homeScreenBtn" class="home-screen-button hidden">Home</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
