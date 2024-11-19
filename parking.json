@@ -1,0 +1,183 @@
+{
+  "parkingLots": [
+    {
+      "name": "North End Housing Lot",
+      "mapImage": "northEndHousing.jpg",
+      "totalParkingSpaces": 120,
+      "notes": "Close to residential buildings. Open to students and staff.",
+      "locationDescription": "North campus, near the dormitories.",
+      "operatingHours": "6 AM - 11 PM",
+      "safetyRating": "Medium",
+      "parkingSpaces": [
+        {
+          "spaceID": "NE001",
+          "category": "Student",
+          "status": "Available",
+          "reservedTimestamp": "2024-11-18T10:00:00",
+          "lastOccupiedTimestamp": "2024-11-18T08:45:00",
+          "distanceToExit": "Close"
+        },
+        {
+          "spaceID": "NE002",
+          "category": "Faculty/Staff",
+          "status": "Occupied",
+          "reservedTimestamp": "2024-11-18T09:30:00",
+          "lastOccupiedTimestamp": "2024-11-18T07:45:00",
+          "distanceToExit": "Moderate"
+        },
+        {
+          "spaceID": "NE003",
+          "category": "Handicap",
+          "status": "Reserved",
+          "reservedTimestamp": "2024-11-18T09:45:00",
+          "lastOccupiedTimestamp": "2024-11-18T09:00:00",
+          "distanceToExit": "Close"
+        },
+        {
+          "spaceID": "NE004",
+          "category": "Student",
+          "status": "Occupied",
+          "reservedTimestamp": "2024-11-18T11:00:00",
+          "lastOccupiedTimestamp": "2024-11-18T10:15:00",
+          "distanceToExit": "Far"
+        },
+        {
+          "spaceID": "NE005",
+          "category": "Faculty/Staff",
+          "status": "Available",
+          "reservedTimestamp": "2024-11-18T10:30:00",
+          "lastOccupiedTimestamp": "2024-11-18T08:50:00",
+          "distanceToExit": "Close"
+        },
+        {
+          "spaceID": "NE006",
+          "category": "Student",
+          "status": "Available",
+          "reservedTimestamp": "2024-11-18T10:45:00",
+          "lastOccupiedTimestamp": "2024-11-18T09:15:00",
+          "distanceToExit": "Moderate"
+        },
+        {
+          "spaceID": "NE007",
+          "category": "Handicap",
+          "status": "Occupied",
+          "reservedTimestamp": "2024-11-18T10:20:00",
+          "lastOccupiedTimestamp": "2024-11-18T09:50:00",
+          "distanceToExit": "Close"
+        },
+        {
+          "spaceID": "NE008",
+          "category": "Student",
+          "status": "Reserved",
+          "reservedTimestamp": "2024-11-18T09:40:00",
+          "lastOccupiedTimestamp": "2024-11-18T08:35:00",
+          "distanceToExit": "Far"
+        },
+        {
+          "spaceID": "NE009",
+          "category": "Faculty/Staff",
+          "status": "Available",
+          "reservedTimestamp": "2024-11-18T11:30:00",
+          "lastOccupiedTimestamp": "2024-11-18T08:20:00",
+          "distanceToExit": "Moderate"
+        },
+        {
+          "spaceID": "NE010",
+          "category": "Student",
+          "status": "Occupied",
+          "reservedTimestamp": "2024-11-18T09:50:00",
+          "lastOccupiedTimestamp": "2024-11-18T07:55:00",
+          "distanceToExit": "Close"
+        },
+        {
+          "spaceID": "NE011",
+          "category": "Handicap",
+          "status": "Available",
+          "reservedTimestamp": "2024-11-18T10:25:00",
+          "lastOccupiedTimestamp": "2024-11-18T08:10:00",
+          "distanceToExit": "Moderate"
+        },
+        {
+          "spaceID": "NE012",
+          "category": "Student",
+          "status": "Available",
+          "reservedTimestamp": "2024-11-18T10:55:00",
+          "lastOccupiedTimestamp": "2024-11-18T09:00:00",
+          "distanceToExit": "Far"
+        }
+      ]
+    },
+    {
+      "name": "Foy Lot",
+      "mapImage": "foyLot.jpg",
+      "totalParkingSpaces": 80,
+      "notes": "Close to Foy building, ideal for faculty.",
+      "locationDescription": "East campus.",
+      "operatingHours": "7 AM - 7 PM",
+      "safetyRating": "Medium"
+    },
+    {
+      "name": "Fontaine Lot",
+      "mapImage": "fontaineLot.jpg",
+      "totalParkingSpaces": 100,
+      "notes": "Open lot near the liberal arts building.",
+      "locationDescription": "Central-ish campus.",
+      "operatingHours": "Open 24/7",
+      "safetyRating": "Medium"
+    },
+    {
+      "name": "River Lot",
+      "mapImage": "riverLot.jpg",
+      "totalParkingSpaces": 150,
+      "notes": "Scenic parking with river views.",
+      "locationDescription": "Near the riverfront.",
+      "operatingHours": "6 AM - 10 PM",
+      "safetyRating": "Low"
+    },
+    {
+      "name": "Donnelly Lot",
+      "mapImage": "donnellyLot.jpg",
+      "totalParkingSpaces": 60,
+      "notes": "Ideal for visitors, located near Donnelly building.",
+      "locationDescription": "Central campus.",
+      "operatingHours": "8 AM - 10 PM",
+      "safetyRating": "Medium"
+    },
+    {
+      "name": "Beck Lot",
+      "mapImage": "beckLot.jpg",
+      "totalParkingSpaces": 70,
+      "notes": "Reserved for students with permits.",
+      "locationDescription": "Near Beck Hall.",
+      "operatingHours": "7 AM - 7 PM",
+      "safetyRating": "Medium"
+    },
+    {
+      "name": "Steel Plant Lot",
+      "mapImage": "steelPlantLot.jpg",
+      "totalParkingSpaces": 40,
+      "notes": "Reserved for special events.",
+      "locationDescription": "Adjacent to Steel Plant building.",
+      "operatingHours": "Event-based hours.",
+      "safetyRating": "Medium"
+    },
+    {
+      "name": "Midrise Lot",
+      "mapImage": "midriseLot.jpg",
+      "totalParkingSpaces": 70,
+      "notes": "Convenient for Midrise dorm residents.",
+      "locationDescription": "North campus.",
+      "operatingHours": "Open 24/7",
+      "safetyRating": "Medium"
+    },
+    {
+      "name": "McCann Lot",
+      "mapImage": "mccannLot.jpg",
+      "totalParkingSpaces": 150,
+      "notes": "Located near athletic facilities.",
+      "locationDescription": "South campus.",
+      "operatingHours": "6 AM - 10 PM",
+      "safetyRating": "Medium"
+    }
+  ]
+}
