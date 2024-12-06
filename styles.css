@@ -1,0 +1,152 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Calibri, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+button {
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: #B31B1B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #FFD700;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* Navbar Styling */
+#navbar {
+    background-color: #B31B1B;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ccc;
+}
+
+#navbar img {
+    height: 50px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-btn {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('background.jpg');
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 20px;
+}
+
+.overlay h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+/* Footer Styling */
+#footer {
+    background-color: #B31B1B;
+    padding: 10px;
+    text-align: center;
+    border-top: 2px solid #ccc;
+}
+
+#footer p {
+    color: #FFFFFF;
+}
+
+/* 404 Page Specific Styling */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.error-container h1 {
+    font-size: 96px;
+    color: #B31B1B;
+    margin: 0;
+}
+
+.error-container p {
+    font-size: 24px;
+    color: #555;
+    margin: 10px 0 20px;
+}
+
+/* Parking Lots Page Styling */
+.lots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.lot-card {
+    background-color: #FFFFFF;
+    border: 1px solid #B31B1B;
+    border-radius: 8px;
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.lot-card:hover {
+    transform: scale(1.05);
+}
+
+.lot-card h2 {
+    color: #B31B1B;
+    margin-bottom: 10px;
+}
+
+.lot-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.lot-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #B31B1B;
+    margin-bottom: 10px;
+    border-radius: 8px 8px 0 0;
+}
