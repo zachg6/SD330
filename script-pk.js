@@ -1,8 +1,5 @@
-// script-pk.js
-
-// General Navbar and Button Navigation
 document.addEventListener("DOMContentLoaded", () => {
-    // Navbar buttons navigation
+    // General: Navbar button navigation
     document.querySelectorAll("button[data-page]").forEach(button => {
         button.addEventListener("click", () => {
             const page = button.getAttribute("data-page");
@@ -10,15 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Check which page is loaded
-    const path = window.location.pathname;
+    // Lots Page: Handle "View Spaces" buttons
+    if (window.location.pathname.includes("lots.html")) {
+        const lotsContainer = document.getElementById("lots-container");
 
-    // Lots Page Script
-    if (path.includes("lots.html")) {
         fetch('./parking.json')
             .then(response => response.json())
             .then(data => {
-                const lotsContainer = document.getElementById('lots-container');
+                // Populate parking lot cards
                 data.parkingLots.forEach(lot => {
                     const lotCard = document.createElement('div');
                     lotCard.classList.add('lot-card');
@@ -30,26 +26,41 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p><strong>Operating Hours:</strong> ${lot.operatingHours}</p>
                         <p><strong>Notes:</strong> ${lot.notes}</p>
                         <p><strong>Safety Rating:</strong> ${lot.safetyRating}</p>
-                        <a href="spaces.html?lot=${encodeURIComponent(lot.name)}" class="view-spaces-btn">View Spaces</a>
+                        <button class="view-spaces-btn" data-lot-name="${lot.name}">View Spaces</button>
                     `;
                     lotsContainer.appendChild(lotCard);
+                });
+
+                // Add event listener for View Spaces buttons
+                document.querySelectorAll(".view-spaces-btn").forEach(button => {
+                    button.addEventListener("click", event => {
+                        const lotName = event.target.getAttribute("data-lot-name");
+                        if (lotName !== "North End Housing Lot") {
+                            event.preventDefault();
+                            location.href = "404.html";
+                        } else {
+                            location.href = `spaces.html?lot=${encodeURIComponent(lotName)}`;
+                        }
+                    });
                 });
             });
     }
 
-    // Spaces Page Script
-    if (path.includes("spaces.html")) {
+    // Spaces Page: Display all spaces
+    if (window.location.pathname.includes("spaces.html")) {
         const urlParams = new URLSearchParams(window.location.search);
-        const lotName = urlParams.get('lot');
+        const spacesContainer = document.getElementById("spaces-container");
 
-        if (lotName) {
-            fetch('parking.json')
-                .then(response => response.json())
-                .then(data => {
-                    const lot = data.parkingLots.find(l => l.name === lotName);
-                    if (lot) {
-                        document.getElementById('lot-name').textContent = lot.name;
-                        lot.parkingSpaces.forEach(space => {
+        fetch('./parking.json')
+            .then(response => response.json())
+            .then(data => {
+                const lotName = urlParams.get('lot');
+                spacesContainer.innerHTML = ""; // Clear existing content
+
+                if (lotName) {
+                    const selectedLot = data.parkingLots.find(lot => lot.name === lotName);
+                    if (selectedLot && selectedLot.parkingSpaces) {
+                        selectedLot.parkingSpaces.forEach(space => {
                             const spaceCard = document.createElement('div');
                             spaceCard.classList.add('space-card');
                             spaceCard.innerHTML = `
@@ -58,14 +69,30 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <p><strong>Status:</strong> ${space.status}</p>
                                 <p><strong>Distance to Exit:</strong> ${space.distanceToExit}</p>
                             `;
-                            document.getElementById('spaces-container').appendChild(spaceCard);
+                            spacesContainer.appendChild(spaceCard);
                         });
                     } else {
-                        document.getElementById('spaces-container').innerHTML = "<p>Error: Lot not found.</p>";
+                        spacesContainer.innerHTML = "<p>No spaces available for this lot.</p>";
                     }
-                });
-        } else {
-            document.getElementById('spaces-container').innerHTML = "<p>Error: No lot specified.</p>";
-        }
+                } else {
+                    // If no lot specified, list all spaces across all lots
+                    data.parkingLots.forEach(lot => {
+                        if (lot.parkingSpaces) {
+                            lot.parkingSpaces.forEach(space => {
+                                const spaceCard = document.createElement('div');
+                                spaceCard.classList.add('space-card');
+                                spaceCard.innerHTML = `
+                                    <h3>Space ID: ${space.spaceID}</h3>
+                                    <p><strong>Category:</strong> ${space.category}</p>
+                                    <p><strong>Status:</strong> ${space.status}</p>
+                                    <p><strong>Distance to Exit:</strong> ${space.distanceToExit}</p>
+                                    <p><strong>Lot Name:</strong> ${lot.name}</p>
+                                `;
+                                spacesContainer.appendChild(spaceCard);
+                            });
+                        }
+                    });
+                }
+            });
     }
 });

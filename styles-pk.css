@@ -60,6 +60,7 @@ button[data-page] {
     background-size: cover;
     background-position: center;
     position: relative;
+    margin-bottom: 20px; /* Add spacing to separate hero section and map */
 }
 
 .overlay {
