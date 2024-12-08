@@ -55,12 +55,9 @@ button[data-page] {
 
 /* Hero Section */
 .hero {
-    background-image: url('background.jpg');
     height: 300px;
-    background-size: cover;
-    background-position: center;
     position: relative;
-    margin-bottom: 20px; /* Add spacing to separate hero section and map */
+    margin-bottom: 40px; /* Add spacing to separate hero section and map */
 }
 
 .overlay {
@@ -208,6 +205,7 @@ button[data-page] {
     margin: 20px auto;
     border: 5px solid #B31B1B;
     display: block;
+    margin-top: 60px;
 }
 
 .button-container {
