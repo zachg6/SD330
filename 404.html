@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found</title>
     <link rel="stylesheet" href="styles-pk.css">
+    <script src="script-pk.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -13,11 +14,11 @@
             <a href="parking.html">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Marist_Red_Foxes_logo.svg/1200px-Marist_Red_Foxes_logo.svg.png" alt="Marist Logo">
             </a>
-            <button onclick="location.href='lots.html';">View Lots</button>
-            <button onclick="location.href='spaces.html';">View Spaces</button>
-            <button onclick="location.href='#';">Support</button>
+            <button data-page="lots.html">View Lots</button>
+            <button data-page="spaces.html">View Spaces</button>
+            <button data-page="#">Support</button>
         </div>
-        <button class="login-btn" onclick="location.href='#';">Login</button>
+        <button class="login-btn" data-page="#">Login</button>
     </div>
 
     <!-- Error Content -->
@@ -25,7 +26,7 @@
         <h1>404</h1>
         <p>Oops! The page you’re looking for doesn’t exist.</p>
         <p>Don't worry, we’ll help you get back on track.</p>
-        <button onclick="location.href='parking.html';">Return to Homepage</button>
+        <button data-page="parking.html">Return to Homepage</button>
     </div>
 
     <!-- Footer -->

@@ -1,56 +1,71 @@
-// Include Navbar
-fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-    });
+// script-pk.js
 
-// Include Footer
-fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer').innerHTML = data;
-    });
-
-// Fetch and display parking lots
-if (document.URL.includes("lots.html")) {
-    fetch('parking.json')
-        .then(response => response.json())
-        .then(data => {
-            const lotsDiv = document.getElementById('parking-lots');
-            data.parkingLots.forEach(lot => {
-                const lotInfo = document.createElement('div');
-                lotInfo.className = 'card';
-                lotInfo.innerHTML = `
-                    <h2>${lot.name}</h2>
-                    <p>${lot.locationDescription}</p>
-                    <p>Total Spaces: ${lot.totalParkingSpaces}</p>
-                    <a href="spaces.html?lot=${encodeURIComponent(lot.name)}">View Spaces</a>
-                `;
-                lotsDiv.appendChild(lotInfo);
-            });
+// General Navbar and Button Navigation
+document.addEventListener("DOMContentLoaded", () => {
+    // Navbar buttons navigation
+    document.querySelectorAll("button[data-page]").forEach(button => {
+        button.addEventListener("click", () => {
+            const page = button.getAttribute("data-page");
+            if (page) location.href = page;
         });
-}
+    });
 
-// Fetch and display spaces for a lot
-if (document.URL.includes("spaces.html")) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const lotName = urlParams.get('lot');
-    fetch('parking.json')
-        .then(response => response.json())
-        .then(data => {
-            const spacesDiv = document.getElementById('parking-spaces');
-            const lot = data.parkingLots.find(lot => lot.name === lotName);
-            if (lot && lot.parkingSpaces) {
-                lot.parkingSpaces.forEach(space => {
-                    const spaceInfo = document.createElement('div');
-                    spaceInfo.className = 'card';
-                    spaceInfo.innerHTML = `
-                        <h3>Space ID: ${space.spaceID}</h3>
-                        <p>Category: ${space.category}</p>
-                        <p>Status: ${space.status}</p>
-                        <p>Distance to Exit: ${space.distanceToExit}</p>
+    // Check which page is loaded
+    const path = window.location.pathname;
+
+    // Lots Page Script
+    if (path.includes("lots.html")) {
+        fetch('./parking.json')
+            .then(response => response.json())
+            .then(data => {
+                const lotsContainer = document.getElementById('lots-container');
+                data.parkingLots.forEach(lot => {
+                    const lotCard = document.createElement('div');
+                    lotCard.classList.add('lot-card');
+                    lotCard.innerHTML = `
+                        <img src="${lot.mapImage}" alt="${lot.name}" class="lot-image">
+                        <h2>${lot.name}</h2>
+                        <p><strong>Location:</strong> ${lot.locationDescription}</p>
+                        <p><strong>Total Spaces:</strong> ${lot.totalParkingSpaces}</p>
+                        <p><strong>Operating Hours:</strong> ${lot.operatingHours}</p>
+                        <p><strong>Notes:</strong> ${lot.notes}</p>
+                        <p><strong>Safety Rating:</strong> ${lot.safetyRating}</p>
+                        <a href="spaces.html?lot=${encodeURIComponent(lot.name)}" class="view-spaces-btn">View Spaces</a>
                     `;
-                    spacesDiv
-::contentReference[oaicite:1]{index=1}
- 
+                    lotsContainer.appendChild(lotCard);
+                });
+            });
+    }
+
+    // Spaces Page Script
+    if (path.includes("spaces.html")) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lotName = urlParams.get('lot');
+
+        if (lotName) {
+            fetch('parking.json')
+                .then(response => response.json())
+                .then(data => {
+                    const lot = data.parkingLots.find(l => l.name === lotName);
+                    if (lot) {
+                        document.getElementById('lot-name').textContent = lot.name;
+                        lot.parkingSpaces.forEach(space => {
+                            const spaceCard = document.createElement('div');
+                            spaceCard.classList.add('space-card');
+                            spaceCard.innerHTML = `
+                                <h3>Space ID: ${space.spaceID}</h3>
+                                <p><strong>Category:</strong> ${space.category}</p>
+                                <p><strong>Status:</strong> ${space.status}</p>
+                                <p><strong>Distance to Exit:</strong> ${space.distanceToExit}</p>
+                            `;
+                            document.getElementById('spaces-container').appendChild(spaceCard);
+                        });
+                    } else {
+                        document.getElementById('spaces-container').innerHTML = "<p>Error: Lot not found.</p>";
+                    }
+                });
+        } else {
+            document.getElementById('spaces-container').innerHTML = "<p>Error: No lot specified.</p>";
+        }
+    }
+});

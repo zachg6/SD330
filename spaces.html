@@ -5,41 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Spaces</title>
     <link rel="stylesheet" href="styles-pk.css">
-    <script>
-        // Fetch and Display Spaces for the Selected Lot
-        document.addEventListener("DOMContentLoaded", () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const lotName = urlParams.get('lot');
-
-            if (!lotName) {
-                document.getElementById('spaces-container').innerHTML = "<p>Error: No lot specified.</p>";
-                return;
-            }
-
-            fetch('parking.json')
-                .then(response => response.json())
-                .then(data => {
-                    const lot = data.parkingLots.find(l => l.name === lotName);
-                    if (!lot) {
-                        document.getElementById('spaces-container').innerHTML = "<p>Error: Lot not found.</p>";
-                        return;
-                    }
-
-                    document.getElementById('lot-name').textContent = lot.name;
-                    lot.parkingSpaces.forEach(space => {
-                        const spaceCard = document.createElement('div');
-                        spaceCard.classList.add('space-card');
-                        spaceCard.innerHTML = `
-                            <h3>Space ID: ${space.spaceID}</h3>
-                            <p><strong>Category:</strong> ${space.category}</p>
-                            <p><strong>Status:</strong> ${space.status}</p>
-                            <p><strong>Distance to Exit:</strong> ${space.distanceToExit}</p>
-                        `;
-                        document.getElementById('spaces-container').appendChild(spaceCard);
-                    });
-                });
-        });
-    </script>
+    <script src="script-pk.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -48,11 +14,11 @@
             <a href="parking.html">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Marist_Red_Foxes_logo.svg/1200px-Marist_Red_Foxes_logo.svg.png" alt="Marist Logo">
             </a>
-            <button onclick="location.href='lots.html';">View Lots</button>
-            <button onclick="location.href='spaces.html';">View Spaces</button>
-            <button onclick="location.href='#';">Support</button>
+            <button data-page="lots.html">View Lots</button>
+            <button data-page="spaces.html">View Spaces</button>
+            <button data-page="#">Support</button>
         </div>
-        <button class="login-btn" onclick="location.href='#';">Login</button>
+        <button class="login-btn" data-page="#">Login</button>
     </div>
 
     <!-- Main Content -->

@@ -5,28 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Lots</title>
     <link rel="stylesheet" href="styles-pk.css">
-    <script>
-        fetch('./parking.json') // Correct relative path
-            .then(response => response.json())
-            .then(data => {
-                const lotsContainer = document.getElementById('lots-container');
-                data.parkingLots.forEach(lot => {
-                    const lotCard = document.createElement('div');
-                    lotCard.classList.add('lot-card');
-                    lotCard.innerHTML = `
-                        <img src="${lot.mapImage}" alt="${lot.name}" class="lot-image">
-                        <h2>${lot.name}</h2>
-                        <p><strong>Location:</strong> ${lot.locationDescription}</p>
-                        <p><strong>Total Spaces:</strong> ${lot.totalParkingSpaces}</p>
-                        <p><strong>Operating Hours:</strong> ${lot.operatingHours}</p>
-                        <p><strong>Notes:</strong> ${lot.notes}</p>
-                        <p><strong>Safety Rating:</strong> ${lot.safetyRating}</p>
-                        <a href="spaces.html?lot=${encodeURIComponent(lot.name)}" class="view-spaces-btn">View Spaces</a>
-                    `;
-                    lotsContainer.appendChild(lotCard);
-            });
-        });
-    </script>
+    <script src="script-pk.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -35,11 +14,11 @@
             <a href="parking.html">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Marist_Red_Foxes_logo.svg/1200px-Marist_Red_Foxes_logo.svg.png" alt="Marist Logo">
             </a>
-            <button onclick="location.href='lots.html';">View Lots</button>
-            <button onclick="location.href='spaces.html';">View Spaces</button>
-            <button onclick="location.href='#';">Support</button>
+            <button data-page="lots.html">View Lots</button>
+            <button data-page="spaces.html">View Spaces</button>
+            <button data-page="#">Support</button>
         </div>
-        <button class="login-btn" onclick="location.href='#';">Login</button>
+        <button class="login-btn" data-page="#">Login</button>
     </div>
 
     <!-- Main Content -->
