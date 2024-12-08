@@ -14,13 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch('./parking.json')
             .then(response => response.json())
             .then(data => {
-                // Populate parking lot cards
+                // Populate parking lot cards without images, showing initials or code names
                 data.parkingLots.forEach(lot => {
                     const lotCard = document.createElement('div');
                     lotCard.classList.add('lot-card');
+                    const lotCode = lot.name.match(/\b\w/g).join('').toUpperCase(); // Extract initials
                     lotCard.innerHTML = `
-                        <img src="${lot.mapImage}" alt="${lot.name}" class="lot-image">
-                        <h2>${lot.name}</h2>
+                        <h2>${lotCode}</h2>
+                        <p><strong>Full Name:</strong> ${lot.name}</p>
                         <p><strong>Location:</strong> ${lot.locationDescription}</p>
                         <p><strong>Total Spaces:</strong> ${lot.totalParkingSpaces}</p>
                         <p><strong>Operating Hours:</strong> ${lot.operatingHours}</p>
