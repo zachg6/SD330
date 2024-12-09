@@ -56,13 +56,11 @@ button[data-page] {
 /* Footer Styling */
 #footer {
     background-color: #B31B1B;
-    padding: 10px;
-    text-align: center;
-    border-top: 2px solid #ccc;
-}
-
-#footer p {
     color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #ccc;
+    margin-top: auto; /* Ensures footer stays at the bottom */
 }
 
 /* Hero Section */
@@ -89,18 +87,28 @@ button[data-page] {
     margin: 0;
 }
 
-//* Enhanced 404 Page Styling */
+/* Enhanced 404 Page Styling */
+body.error-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures full-page height */
+    background: url('404-bkg.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
 .error-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    text-align: center;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    max-width: 90%;
+    width: 600px;
+    margin: auto; /* Centers the container */
 }
 
 .error-container h1 {
@@ -134,12 +142,6 @@ button[data-page] {
     transform: scale(1.1);
 }
 
-/* Add background image for the error page */
-body.error-page {
-    background: url('404-bkg.webp') no-repeat center center fixed;
-    background-size: cover;
-}
-
 /* Add fallback gradient if image fails */
 @media (prefers-reduced-motion: reduce) {
     body.error-page {
@@ -156,7 +158,6 @@ body.error-page {
         background: radial-gradient(circle, #400000, #800000, #B31B1B);
     }
 }
-
 
 /* Parking Lots Page Styling */
 .lots-container {
@@ -279,19 +280,4 @@ body.error-page {
     background-color: #FFD700;
     color: black;
     transform: scale(1.05);
-}
-
-/* Add animated background */
-body.error-page {
-    background: radial-gradient(circle, #B31B1B, #800000, #400000);
-    animation: animateBackground 15s infinite alternate;
-}
-
-@keyframes animateBackground {
-    0% {
-        background: radial-gradient(circle, #B31B1B, #800000, #400000);
-    }
-    100% {
-        background: radial-gradient(circle, #400000, #800000, #B31B1B);
-    }
 }
