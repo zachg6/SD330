@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Add specific styling or animations for the 404 page
+    if (window.location.pathname.includes("404.html")) {
+        document.body.classList.add("error-page");
+        }
+    });
+
+
     // Lots Page: Handle "View Spaces" buttons
     if (window.location.pathname.includes("lots.html")) {
         const lotsContainer = document.getElementById("lots-container");
